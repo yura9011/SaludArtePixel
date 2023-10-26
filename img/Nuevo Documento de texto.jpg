@@ -1,0 +1,16 @@
+# Ruta de la carpeta que contiene los archivos que deseas modificar
+$carpeta = "C:\pxl\MotionTrailAnimations\img"
+
+# Obtener todos los archivos en la carpeta actual con cualquier extensión
+$archivos = Get-ChildItem $carpeta
+
+# Recorrer cada archivo y cambiar su extensión a .jpg
+foreach ($archivo in $archivos) {
+    $nombreOriginal = $archivo.Name
+    $nombreNuevo = $nombreOriginal -replace "\..*", ".jpg"
+    
+    # Cambiar la extensión del archivo
+    Rename-Item -Path $archivo.FullName -NewName $nombreNuevo
+}
+
+Write-Host "Se han cambiado las extensiones de los archivos en la carpeta a .jpg."
